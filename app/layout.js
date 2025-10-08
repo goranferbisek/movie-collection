@@ -1,7 +1,7 @@
-import {Geist, Geist_Mono} from "next/font/google";
 import tmdbLogo from "../public/tmdb-blue_short.svg";
 import "./globals.css";
 import Image from "next/image";
+import SideNavigation from "@/components/navigation/side-navigation";
 
 export const metadata = {
     title: "Movie collection app",
@@ -12,6 +12,7 @@ export default function RootLayout({children}) {
     return (
         <html lang="en">
         <body>
+        <SideNavigation />
         <div className="container">
             {children}
             <footer>
