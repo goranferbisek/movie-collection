@@ -1,11 +1,14 @@
 .sideNavigation {
     width: 200px;
-    background-color: red;
-    height: 100vh;
 }
 
 .navItem {
     list-style-type: none;
     text-decoration: none;
     font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.navItem a {
+    text-decoration: none;
 }
