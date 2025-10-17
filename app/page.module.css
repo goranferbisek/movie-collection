@@ -1,7 +1,17 @@
+.background {
+    height: 100%;
+    background: #F1F1F1;
+    background: linear-gradient(135deg, rgba(65, 119, 248, 1) 0%, rgba(241, 241, 241, 1) 60%);
+}
+
+.hero {
+    max-width: 1620px;
+    margin-inline: auto;
+}
+
 .hero h1 {
     font-size: 5rem;
     text-align: center;
-    padding: 5rem;
 }
 
 .cta {
@@ -12,7 +22,16 @@
     text-align: center;
 }
 
-.cta > button {
-    margin: auto;
-    width: 100px;
+.cta > .join {
+    font-size: 2rem;
+}
+
+.signup-button {
+    padding: .7rem 1.4rem;
+    color: var(--accent-color);
+    margin: auto auto 1rem;
+}
+
+.login-cta {
+    padding: 1rem;
 }
