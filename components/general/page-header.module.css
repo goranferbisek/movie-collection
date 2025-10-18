@@ -16,3 +16,7 @@
     height: 2rem;
     color: var(--accent-color);
 }
+
+.username {
+    margin-inline: 1rem;
+}
