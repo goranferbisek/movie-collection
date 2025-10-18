@@ -9,6 +9,8 @@ export const metadata = {
 export default function MemberLayout({children}) {
     return (<>
         <SideNavigation />
-        {children}
+        <main>
+            {children}
+        </main>
     </>);
 }
