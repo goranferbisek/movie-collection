@@ -1,8 +1,14 @@
+:root {
+    --accent-color: #4177f8;
+    --gray-background: #f1f1f1
+}
+
 html, body {
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    line-height: 1.5;
 }
 
 body {
@@ -18,8 +24,13 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--gray-background);
 }
 
 .tmdb-logo {
     padding-left: 1em;
+}
+
+a {
+    color: var(--accent-color);
 }

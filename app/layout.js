@@ -1,5 +1,12 @@
+import {Roboto} from "next/font/google";
+
 import "./globals.css";
 import Footer from "@/components/general/footer";
+import PageHeader from "@/components/general/page-header"
+
+const roboto = Roboto({
+    subsets: ['latin'],
+});
 
 export const metadata = {
     title: "Movie collection app",
@@ -8,12 +15,13 @@ export const metadata = {
 
 export default function RootLayout({children}) {
     return (
-        <html lang="en">
+        <html lang="en" className={roboto.className}>
         <body>
+        <PageHeader/>
         <div className="container">
             {children}
-            <Footer />
         </div>
+        <Footer/>
         </body>
         </html>
     );

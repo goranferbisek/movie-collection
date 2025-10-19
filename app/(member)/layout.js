@@ -1,6 +1,5 @@
 import "@/app/globals.css";
 import SideNavigation from "@/components/navigation/side-navigation";
-import Footer from "@/components/general/footer";
 
 export const metadata = {
     title: "Movie collection app",
@@ -8,14 +7,8 @@ export const metadata = {
 };
 
 export default function MemberLayout({children}) {
-    return (
-        <html lang="en">
-        <body>
+    return (<>
         <SideNavigation />
-        <div className="container">
-            {children}
-        </div>
-        </body>
-        </html>
-    );
+        {children}
+    </>);
 }
