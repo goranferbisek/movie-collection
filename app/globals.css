@@ -20,6 +20,15 @@ body {
     flex: 1;
 }
 
+.content {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+}
+
+.main {
+    padding-inline: 2rem;
+}
+
 footer {
     display: flex;
     justify-content: center;
