@@ -6,7 +6,7 @@ export default function MovieCard({ movie }) {
     const imageURL = baseURL + movie.poster_path;
 
     return (
-        <div className={classes.card}>
+        <article className={classes.card}>
             <div className={classes.image} >
                 <Image src={imageURL} alt={movie.title} fill />
             </div>
@@ -14,6 +14,6 @@ export default function MovieCard({ movie }) {
                 <h2 className={classes.title}>{movie.title}</h2>
                 <p className={classes['release-date']}>{movie.release_date}</p>
             </div>
-        </div>
+        </article>
     )
 }
