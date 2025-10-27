@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function SideNavigation() {
     return (
-        <nav className={classes.sideNavigation}>
+        <nav className={classes.navigation}>
             <menu>
                 <li className={classes.navItem}>
                     <Link href="/library">Library</Link>

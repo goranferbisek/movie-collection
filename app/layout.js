@@ -18,7 +18,7 @@ export default function RootLayout({children}) {
         <html lang="en" className={roboto.className}>
         <body>
         <PageHeader/>
-        <div className="container">
+        <div className="hero">
             {children}
         </div>
         <Footer/>

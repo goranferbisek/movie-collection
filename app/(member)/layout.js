@@ -7,8 +7,10 @@ export const metadata = {
 };
 
 export default function MemberLayout({children}) {
-    return (<>
+    return (<div className="content">
         <SideNavigation />
-        {children}
-    </>);
+        <main className="main">
+            {children}
+        </main>
+    </div>);
 }
