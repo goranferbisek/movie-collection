@@ -1,12 +1,13 @@
 import classes from './movie-grid.module.css';
 import MovieCard from "@/components/movies/movie-card";
+import { getPopularMovies} from "@/lib/actions";
 
-export default function MovieGrid({movieList}) {
+export default async function MovieGrid() {
+    const movies = await getPopularMovies();
 
-    return (<section className={classes.grid}>
-            {movieList.map(movie => (
-                <MovieCard key={movie.id} movie={movie} />
-            ))}
-        </section>
-    )
+    return (<main className={classes['movie-grid']}>
+        {movies.results.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+        ))}
+    </main> )
 }
