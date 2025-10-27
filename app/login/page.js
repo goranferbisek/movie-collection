@@ -1,4 +1,5 @@
 import classes from "./page.module.css";
+import LoginFormSubmit from "@/components/authentication/login-form-submit";
 
 export const metadata = {
     title: "Login",
@@ -12,15 +13,21 @@ export default function LoginPage() {
         console.log(`${username} is trying to login`);
     }
 
-    return(<>
-        <h1>Login</h1>
+    return (<>
         <form action={authenticateAction}>
-            <section className={classes}>
-                <label htmlFor="username">Username</label>
-                <input type="text" name="username" placeholder="Username" />
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" placeholder="Password" />
-                <button id="login" type="submit">Login</button>
+            <section className={classes.login}>
+                <h2>Login</h2>
+                <div className={classes.control}>
+                    <label htmlFor="username">Username</label>
+                    <input type="text" name="username" placeholder="Username"/>
+                </div>
+                <div className={classes.control}>
+                    <label htmlFor="password">Password</label>
+                    <input type="password" name="password" placeholder="Password"/>
+                </div>
+                <div className={classes.control}>
+                    <LoginFormSubmit/>
+                </div>
             </section>
         </form>
     </>);
