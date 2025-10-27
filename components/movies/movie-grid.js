@@ -5,7 +5,7 @@ import { getPopularMovies} from "@/lib/actions";
 export default async function MovieGrid() {
     const movies = await getPopularMovies();
 
-    return (<main className={classes['movie-grid']}>
+    return (<main className={classes.grid}>
         {movies.results.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
         ))}
