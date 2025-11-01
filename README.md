@@ -2,9 +2,19 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-Copy **_.env.example_** file to **_.env_** and add the API Read Access Token
+Copy **_.env.example_** file to **_.env_** and add the TMDB API Read Access Token
+For more information check [TMDB API developer page](https://developer.themoviedb.org/docs/getting-started)
 ```bash
 TMDB_READ_ACCESS_TOKEN=
+```
+
+Setup a Postgres database and provide connection details
+```bash
+POSTGRES_HOST="localhost"
+POSTGRES_PORT="5432"
+POSTGRES_USER="exampleUser"
+POSTGRES_PASSWORD="examplePass"
+POSTGRES_DATABASE="exampleDb"
 ```
 
 First, run the development server:
