@@ -1,7 +1,6 @@
 'use client';
 
 import classes from "./signup-form.module.css";
-import SignUpFormSubmit from "@/components/authentication/signup-form-submit";
 import {signUp} from "@/lib/auth-actions";
 import {useActionState} from "react";
 import Link from "next/link";
@@ -28,7 +27,9 @@ export default function SignupForm() {
                 </div>
             )}
             <div className={classes.control}>
-                <SignUpFormSubmit/>
+                <button disabled={isPending}>
+                    {isPending ? 'Authenticating...' : 'Sign up'}
+                </button>
             </div>
             <span>Already have an account?</span><Link href="/login">Login</Link>
         </section>
