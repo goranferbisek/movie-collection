@@ -1,7 +1,7 @@
 'use client';
 
 import classes from "./signup-form.module.css";
-import {signUp} from "@/lib/auth-actions";
+import {signUp} from "@/actions/auth-actions";
 import {useActionState} from "react";
 import Link from "next/link";
 

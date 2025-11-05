@@ -1,6 +1,6 @@
 import MovieGrid from "@/components/movies/movie-grid";
 import {Suspense} from "react";
-import { getPopularMovies} from "@/lib/movie-actions";
+import { getPopularMovies} from "@/actions/movie-actions";
 
 
 export default async function DiscoverPage() {
