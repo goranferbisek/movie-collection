@@ -3,6 +3,7 @@ import {redirect} from "next/navigation";
 
 import {hashUserPassword} from "@/lib/hash";
 import {createUser} from "@/lib/db/users";
+import {createAuthSession} from "@/lib/auth";
 
 export async function signUp(prevState, formData) {
     const username = await formData.get('username');
@@ -27,7 +28,9 @@ export async function signUp(prevState, formData) {
 
     const hashedPassword = hashUserPassword(password);
     try {
-        await createUser(username, hashedPassword);
+        const userId = await createUser(username, hashedPassword);
+        await createAuthSession(userId);
+        redirect('/discover');
     } catch (error) {
         // 23505 -> postgres unique_violation
         if (error.code === '23505') {
@@ -40,5 +43,4 @@ export async function signUp(prevState, formData) {
         }
         throw error;
     }
-    redirect('/discover');
 }
