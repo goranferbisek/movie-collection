@@ -1,11 +1,11 @@
-import SignupForm from "@/components/authentication/signup-form";
+import AuthForm from "@/components/authentication/auth-form";
 
 export const metadata = {
     title: "SignUp"
 }
 
 export default function SignUpPage() {
-    return (<>
-        <SignupForm/>
-    </>);
+    return (
+        <AuthForm mode="signup"/>
+    );
 }

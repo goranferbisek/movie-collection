@@ -13,7 +13,7 @@ export default async function MemberLayout({children}) {
     const result = await verifyAuth();
 
     if (!result.user) {
-        return redirect('/signup');
+        return redirect('/login');
     }
 
     return (<div className="content">

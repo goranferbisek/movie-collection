@@ -2,7 +2,7 @@
 import {redirect} from "next/navigation";
 
 import {hashUserPassword} from "@/lib/hash";
-import {createUser} from "@/lib/db/users";
+import {createUser, getUserById} from "@/lib/db/users";
 import {createAuthSession} from "@/lib/auth";
 
 export async function signUp(prevState, formData) {
@@ -43,4 +43,8 @@ export async function signUp(prevState, formData) {
         }
         throw error;
     }
+}
+
+export async function login(prevState, formData) {
+    // TODO: implement login
 }
