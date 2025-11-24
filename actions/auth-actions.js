@@ -1,8 +1,8 @@
 'use server';
 import {redirect} from "next/navigation";
 
-import {hashUserPassword} from "@/lib/hash";
-import {createUser, getUserById} from "@/lib/db/users";
+import {hashUserPassword, verifyPassword} from "@/lib/hash";
+import {createUser, getUserByUsername} from "@/lib/db/users";
 import {createAuthSession} from "@/lib/auth";
 
 export async function signUp(prevState, formData) {
@@ -46,5 +46,16 @@ export async function signUp(prevState, formData) {
 }
 
 export async function login(prevState, formData) {
-    // TODO: implement login
+    const username = await formData.get('username');
+    const password = formData.get('password');
+
+    const existingUser = await getUserByUsername(username);
+    if (!existingUser || !verifyPassword(existingUser.password, password)) {
+        return {errors:
+            { username: 'Could not authenticate user, please check your credentials.' }
+        }
+    }
+
+    await createAuthSession(existingUser.id);
+    redirect('/discover');
 }
