@@ -3,7 +3,7 @@ import {redirect} from "next/navigation";
 
 import {hashUserPassword, verifyPassword} from "@/lib/hash";
 import {createUser, getUserByUsername} from "@/lib/db/users";
-import {createAuthSession} from "@/lib/auth";
+import {createAuthSession, destroySession} from "@/lib/auth";
 
 export async function signUp(prevState, formData) {
     const username = await formData.get('username');
@@ -58,4 +58,9 @@ export async function login(prevState, formData) {
 
     await createAuthSession(existingUser.id);
     redirect('/discover');
+}
+
+export async function logout() {
+    await destroySession();
+    redirect('/');
 }
