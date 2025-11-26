@@ -1,8 +1,9 @@
 'use server';
 import {redirect} from "next/navigation";
 
-import {hashUserPassword} from "@/lib/hash";
-import {createUser} from "@/lib/db/users";
+import {hashUserPassword, verifyPassword} from "@/lib/hash";
+import {createUser, getUserByUsername} from "@/lib/db/users";
+import {createAuthSession, destroySession} from "@/lib/auth";
 
 export async function signUp(prevState, formData) {
     const username = await formData.get('username');
@@ -27,7 +28,9 @@ export async function signUp(prevState, formData) {
 
     const hashedPassword = hashUserPassword(password);
     try {
-        await createUser(username, hashedPassword);
+        const userId = await createUser(username, hashedPassword);
+        await createAuthSession(userId);
+        redirect('/discover');
     } catch (error) {
         // 23505 -> postgres unique_violation
         if (error.code === '23505') {
@@ -40,5 +43,24 @@ export async function signUp(prevState, formData) {
         }
         throw error;
     }
+}
+
+export async function login(prevState, formData) {
+    const username = await formData.get('username');
+    const password = formData.get('password');
+
+    const existingUser = await getUserByUsername(username);
+    if (!existingUser || !verifyPassword(existingUser.password, password)) {
+        return {errors:
+            { username: 'Could not authenticate user, please check your credentials.' }
+        }
+    }
+
+    await createAuthSession(existingUser.id);
     redirect('/discover');
+}
+
+export async function logout() {
+    await destroySession();
+    redirect('/');
 }

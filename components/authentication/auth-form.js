@@ -1,16 +1,19 @@
 'use client';
 
-import classes from "./signup-form.module.css";
-import {signUp} from "@/lib/auth-actions";
+import classes from "./auth-form.module.css";
+import {signUp, login} from "@/actions/auth-actions";
 import {useActionState} from "react";
 import Link from "next/link";
 
-export default function SignupForm() {
-    const [state, formAction, isPending] = useActionState(signUp, {});
+export default function AuthForm({mode}) {
+    const authFunction = mode === 'login' ? login : signUp;
+    const [state, formAction, isPending] = useActionState(authFunction, {});
 
     return(<form action={formAction}>
         <section className={classes.login}>
-            <h2>Create an account</h2>
+            <h2>
+                {mode === 'signup' ? 'Create an account' : 'Login'}
+            </h2>
             <div className={classes.control}>
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username" placeholder="Username"/>
@@ -28,10 +31,18 @@ export default function SignupForm() {
             )}
             <div className={classes.control}>
                 <button disabled={isPending}>
-                    {isPending ? 'Authenticating...' : 'Sign up'}
+                    {isPending ?
+                        (mode === 'login' ? 'Authenticating...' : 'Creating account...') :
+                        (mode === 'login' ? 'Login' : 'Sign up')
+                    }
                 </button>
             </div>
-            <span>Already have an account?</span><Link href="/login">Login</Link>
+            {mode === "signup" && (<>
+                <span>Already have an account?</span><Link href="/login">Login</Link>
+            </>)}
+            {mode === "login" && (<>
+                <span>Don't have an account yet?</span><Link href="/signup">Sign up</Link>
+            </>)}
         </section>
-    </form>)
+    </form>);
 }
