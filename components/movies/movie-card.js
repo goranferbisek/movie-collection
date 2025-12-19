@@ -1,5 +1,6 @@
 import classes from './movie-card.module.css';
 import Image from "next/image";
+import AddButton from "@/components/movies/add-button";
 
 export default function MovieCard({ movie }) {
     const baseURL = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
@@ -13,6 +14,7 @@ export default function MovieCard({ movie }) {
             <div className={classes.description}>
                 <h2 className={classes.title}>{movie.title}</h2>
                 <p className={classes['release-date']}>{movie.release_date}</p>
+                <AddButton movie={movie} />
             </div>
         </article>
     )

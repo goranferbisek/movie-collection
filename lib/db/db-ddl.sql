@@ -11,3 +11,9 @@ CREATE TABLE IF NOT EXISTS "sessions" (
     created_at INTEGER NOT NULL, -- unix time (seconds)
     user_id INTEGER NOT NULL REFERENCES users(id)
 );
+
+CREATE TABLE IF NOT EXISTS "favourites" (
+    id INTEGER PRIMARY KEY,
+    title TEXT UNIQUE NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(id)
+);

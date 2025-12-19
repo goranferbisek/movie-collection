@@ -1,5 +1,8 @@
 'use server';
 
+import {saveFavoriteMovie, selectFavouriteMovies} from "@/lib/db/favourites";
+import {verifyAuth} from "@/lib/auth";
+
 const baseURL = 'https://api.themoviedb.org/3/discover/movie';
 const queryParameters = '?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
 const options = {
@@ -19,4 +22,21 @@ export async function getPopularMovies() {
     }
 
     return await res.json();
+}
+
+export async function addToLibrary(movie, prevState, formData) {
+    const auth = await verifyAuth();
+
+    const saved = await saveFavoriteMovie(movie, auth?.user);
+    if (!saved) {
+        return {
+            success: false,
+            message: 'Could not save'
+        }
+    }
+
+    return {
+        success: true,
+        message: 'Saved successfully'
+    }
 }
