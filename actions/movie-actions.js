@@ -1,6 +1,6 @@
 'use server';
 
-import {saveFavoriteMovie, selectFavouriteMovies} from "@/lib/db/favourites";
+import {saveFavoriteMovie, listFavouriteMovies} from "@/lib/db/favourites";
 import {verifyAuth} from "@/lib/auth";
 
 const baseURL = 'https://api.themoviedb.org/3/discover/movie';
@@ -22,6 +22,10 @@ export async function getPopularMovies() {
     }
 
     return await res.json();
+}
+
+export async function getFavouriteMovies(user) {
+    return await listFavouriteMovies(user);
 }
 
 export async function addToLibrary(movie, prevState, formData) {
